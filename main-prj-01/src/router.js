@@ -19,6 +19,6 @@ export default createRouter({
         },
         { path: '/register', component: CoachRegistration },
         { path: '/requests', component: RequestReceived },
-        { path: '/notFound(.*)', component: NotFound }
+        { path: '/:notFound(.*)', component: NotFound }
     ]
 })
