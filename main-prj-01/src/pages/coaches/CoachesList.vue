@@ -9,7 +9,8 @@
     <section>
       <div class="controls">
         <base-button @click="loadCoaches">Refresh</base-button>
-        <base-button v-if="!showRegisterButton" link to="/register"
+        <base-button link to="/auth" v-if="!isLoggedIn">Login</base-button>
+        <base-button v-if="isLoggedIn && !showRegisterButton" link to="/register"
           >Register as Coach</base-button
         >
       </div>
@@ -70,9 +71,13 @@ export default {
         return false;
       });
     },
+    isLoggedIn(){
+      return this.$store.getters.isLoggedIn;
+    },
     showRegisterButton() {
       return !this.isLoading && this.$store.getters['coaches/isCoach'];
     },
+    
   },
   created(){
     this.loadCoaches();
