@@ -8,15 +8,17 @@ export default {
             dscription: data.desc,
             areas: data.areas
         };
-
-        const resposne = await fetch(`https://web-coach-124f7-default-rtdb.asia-southeast1.firebasedatabase.app/coaches/${userId}.json`, {
+        
+        const token = context.rootGetters.token;
+        const resposne = await fetch(`https://web-coach-124f7-default-rtdb.asia-southeast1.firebasedatabase.app/coaches/${userId}.json?auth=` + token, {
             method: 'PUT',
             body: JSON.stringify(coach)
         });
 
-        // const resposneData = await resposne.json();
+        const resposneData = await resposne.json();
         if (!resposne.ok) {
-            // error
+            const error = resposneData.message || 'Something went wrong';
+            throw error
         }
         context.commit('registerCoach', {
             ...coach,
