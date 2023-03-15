@@ -9,8 +9,11 @@ export default {
       areas: data.areas
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json`,
+      `https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json?auth=` +
+        token,
       {
         method: 'PUT',
         body: JSON.stringify(coachData)
