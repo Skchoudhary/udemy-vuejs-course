@@ -3,10 +3,10 @@ let timer;
 export default {
     async auth(context, payload){
         const mode = payload.mode;
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBfteY760D27NDW52uYDM8xdEE4vOTPUZ4';
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
 
         if (mode === 'signup'){
-           url =  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBfteY760D27NDW52uYDM8xdEE4vOTPUZ4';
+           url =  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
         }
 
         const response = await fetch(url, {
